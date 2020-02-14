@@ -1,7 +1,7 @@
 # Teste: Nome completo
 
 ### Prazo: DD/MM/AAAA
-##### *Antes de iniciar faça o fork do projeto e informe o prazo para a conclusão no primeiro commit. Ao finalizar abrir uma PR para Rodrigo Priolo(rodrigopriolo)
+##### *Antes de iniciar faça o fork do projeto e informe o prazo para a conclusão no primeiro commit. Ao finalizar abrir uma PR para Rodrigo Priolo(rodrigo_priolo)
 
 ## Projeto
 O projeto consiste em criar uma agenda de contatos parecida com a do android / IOS.
