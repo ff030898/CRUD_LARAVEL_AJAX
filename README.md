@@ -1,6 +1,6 @@
-# Teste: Nome completo
+# Teste: Fabrício Ferreira Dos Santos
 
-### Prazo: DD/MM/AAAA
+### Prazo: 17/08/2020
 ##### *Antes de iniciar faça o fork do projeto e informe o prazo para a conclusão no primeiro commit. Ao finalizar abrir uma PR para Rodrigo Priolo(rodrigo_priolo)
 
 ## Projeto
