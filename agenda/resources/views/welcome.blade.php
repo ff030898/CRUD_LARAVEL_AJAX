@@ -1,100 +1,87 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Admin Template">
+        <meta name="keywords" content="admin dashboard, admin, flat, flat ui, ui kit, app, web app, responsive">
+        <link rel="shortcut icon" href="img/ico/favicon.png">
+        <title>Login</title>
 
-        <title>Laravel</title>
+        <!-- Base Styles -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+    <body class="login-body">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+        <div class="login-logo">
+            <img src="img/login_logo.png" alt=""/>
         </div>
+
+        <h2 class="form-heading">login</h2>
+        <div class="container log-row">
+            <form class="form-signin" id="form_login" method="post" >
+
+                {{ csrf_field() }}
+
+                <div class="login-wrap">
+
+                    <div class="alert alert-danger" style="display: none;" id="message" role="alert">
+
+                    </div>
+
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" autofocus required>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                    <button class="btn btn-lg btn-success btn-block" type="submit">LOGIN</button>
+
+                </div>
+
+
+
+            </form>
+        </div>
+
+        <script>
+  $(document).ready(function () {
+
+      $('#form_login').on('submit', function (event) {
+
+          event.preventDefault();
+
+          $.ajax({
+              type: 'POST',
+              url: "/login",
+              dataType: 'json',
+              data: new FormData(this),
+              contentType: false,
+              cache: false,
+              processData: false,
+              success: function (data) {
+                  if (data.login === true) {
+                      window.location.href = "{{route ('admin')}}";
+                  } else {
+                      $('#message').css('display', 'block');
+                      $('#message').html(data.message);
+                  }
+              }
+          });
+          return false;
+
+
+      });
+  });
+        </script>
+
+
+        <!--jquery-1.10.2.min-->
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <!--Bootstrap Js-->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jrespond..min.js.html"></script>
+
     </body>
 </html>
